@@ -29,7 +29,7 @@ describe('findTwoMinNumbers', function() {
     }        
     assert.equal(findTwoMinNumbers(arrManyElements), 1); 
     //Это требуется чтобы успеть создать массив из 100 миллионов элементов и обработать его
-    this.timeout(10000);
+    this.timeout(100000);
     done();
   });
   
