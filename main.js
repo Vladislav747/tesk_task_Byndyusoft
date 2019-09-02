@@ -7,7 +7,16 @@ HINT: учти, что массив может быть пустым, или б�
 var arr = [4, 0, 3, 19, 492, -10, 1];
 
 function sortArrEl(a,b){
-    return +a > +b ? 1 : -1;
+    if(!isNaN(+a) && !isNaN(+b)){
+        return +a > +b ? 1 : -1;} 
+    else if (!isNaN(+a)){
+        return -1;
+    }
+    else if(!isNaN(+b)){
+        return 1;}
+    else{
+        return 1;
+    }
 }
 
 function findTwoMinNumbers(arr){
@@ -15,7 +24,7 @@ function findTwoMinNumbers(arr){
     var arrNumbers = arr.filter(function(el){
         return !isNaN(+el);}).sort(sortArrEl);
     if(!arrNumbers.length){
-        return 'Массив пуст';
+        throw new Error('Массив пуст');
     }
     //Если в массиве единственный элемент возвращаем его
     var sumMinNumbers = arrNumbers.length == 1 ? +arrNumbers[0] : +arrNumbers[0] + +arrNumbers[1];

@@ -5,11 +5,6 @@ describe('findTwoMinNumbers', function() {
     assert.equal(findTwoMinNumbers([4, 0, 3, 19, 492, -10, 1]), -10);
   });  
 
-  it('Функция должна показывать что массив пустой если он пустой ', function() {
-    findTwoMinNumbers([]);
-    assert.equal(findTwoMinNumbers([]), 'Массив пуст');
-  });  
-  
   it('Функция должна корректно считать сумму если минимальное значение находится в типе строка и его можно перевести в число ', function() {
     findTwoMinNumbers(["1",0,"-1"]);
     assert.equal(findTwoMinNumbers(["1",0,"-1"]), -1);    
@@ -21,6 +16,11 @@ describe('findTwoMinNumbers', function() {
     assert.equal(findTwoMinNumbers([5]), 5);    
   });
 
+
+   it('Функция должна корректно считать если в массиве и текст и число и числов типе строка', function() {
+    var arrVarious = [1,12,43,'фап', 123, 45, "asdasd", "adasd", "12314", 0];
+    assert.equal(findTwoMinNumbers(arrVarious), [0, 1, 12, 43, 45, 123, "12314", "фап", "asdasd", "adasd"]);    
+  });
 
   it('Функция должна способна обработать 100 миллионов элементов', function(done) {
      var arrManyElements = [];
