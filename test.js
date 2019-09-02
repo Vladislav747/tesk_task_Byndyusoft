@@ -17,9 +17,9 @@ describe('findTwoMinNumbers', function() {
   });
 
 
-   it('Функция должна корректно считать если в массиве и текст и число и числов типе строка', function() {
+   it('Функция должна корректно считать если в массиве и текст и число и числов типе строка пример массива [0, 1, 12, 43, 45, 123, "12314", "фап", "asdasd", "adasd"]', function() {
     var arrVarious = [1,12,43,'фап', 123, 45, "asdasd", "adasd", "12314", 0];
-    assert.equal(findTwoMinNumbers(arrVarious), [0, 1, 12, 43, 45, 123, "12314", "фап", "asdasd", "adasd"]);    
+    assert.equal(findTwoMinNumbers(arrVarious), 1);    
   });
 
   it('Функция должна способна обработать 100 миллионов элементов', function(done) {
