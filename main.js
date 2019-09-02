@@ -6,29 +6,44 @@ HINT: учти, что массив может быть пустым, или б�
 
 var arr = [4, 0, 3, 19, 492, -10, 1];
 
-function sortArrEl(a,b){
-    if(!isNaN(+a) && !isNaN(+b)){
-        return +a > +b ? 1 : -1;} 
-    else if (!isNaN(+a)){
-        return -1;
-    }
-    else if(!isNaN(+b)){
-        return 1;}
-    else{
-        return 1;
-    }
-}
 
 function findTwoMinNumbers(arr){
-    //Закладываем возможность наличия текста в массиве 
-    var arrNumbers = arr.filter(function(el){
-        return !isNaN(+el);}).sort(sortArrEl);
-    if(!arrNumbers.length){
-        throw new Error('Массив пуст');
+   
+   
+  //Закладываем возможность наличия текста в массиве 
+  var arrNumbers = arr.filter(function(el){
+    return !isNaN(+el);});
+  
+    if(!arrNumbers.length)
+  throw new Error('Массив пуст либо содержит только буквы');
+  
+  
+  if(arrNumbers.length == 1){
+    var sumMinNumbers = arrNumbers[0];
     }
-    //Если в массиве единственный элемент возвращаем его
-    var sumMinNumbers = arrNumbers.length == 1 ? +arrNumbers[0] : +arrNumbers[0] + +arrNumbers[1];
-        return sumMinNumbers;
+
+  else
+  {
+     var minNumberFirst = arrNumbers[0]
+     var minNumberSecond = arrNumbers[1];
+  
+    for(i=2; i < arrNumbers.length; i++)
+    {
+      if(arrNumbers[i] < minNumberFirst)
+      {
+        minNumberSecond = minNumberFirst < minNumberSecond ? minNumberFirst: minNumberSecond;
+        minNumberFirst = arrNumbers[i];
+      }
+      else if (arrNumbers[i] < minNumberSecond)
+      {
+        minNumberSecond = arrNumbers[i];     
+      }
+    }
+   var sumMinNumbers = +minNumberFirst + +minNumberSecond;
+  }
+  //Если в массиве единственный элемент возвращаем его
+  return sumMinNumbers;
+
 }
 
 
