@@ -8,20 +8,27 @@ var arr = [4, 0, 3, 19, 492, -10, 1];
 
 
 function findTwoMinNumbers(arr){
-   
-   
+      
+   //Проверяем на недопустимые значения
+   if(arr === null)
+     throw new Error('Массив не может равняться null');
+    else if(typeof(arr) == "undefined")
+        throw new Error('Массив не может равняться undefined');
+    else if(!arr.length)
+        throw new Error('Массив не может быть пустой');
+      
   //Закладываем возможность наличия текста в массиве 
   var arrNumbers = arr.filter(function(el){
-    return !isNaN(+el);});
+    return !isNaN(+el) && el != null;});
   
+  //проверяем на undefined и текст в элементах массиве
     if(!arrNumbers.length)
-  throw new Error('Массив пуст либо содержит только буквы');
-  
+    throw new Error('Массив должен содержать только цифры - ваш массив либо буквы либо undefined значения');
+ 
   
   if(arrNumbers.length == 1){
     var sumMinNumbers = arrNumbers[0];
-    }
-
+  }
   else
   {
      var minNumberFirst = arrNumbers[0]
@@ -39,11 +46,12 @@ function findTwoMinNumbers(arr){
         minNumberSecond = arrNumbers[i];     
       }
     }
-   var sumMinNumbers = +minNumberFirst + +minNumberSecond;
-  }
-  //Если в массиве единственный элемент возвращаем его
-  return sumMinNumbers;
+  
+    var sumMinNumbers = +minNumberFirst + +minNumberSecond;
 
+  }
+ 
+    return sumMinNumbers;
 }
 
 
